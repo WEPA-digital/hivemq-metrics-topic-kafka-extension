@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.wepa.hivemqextensions.metricspertopickafka;
+package eu.wepa.hivemqextensions.metricspertopickafka.transformers;
 
-public class MetricsConstants {
-    public static final String METRIC_INBOUND_PREFIX = "eu.wepa.hivemq.inbound.messages.count";
-    public static final String METRIC_OUTBOUND_PREFIX = "eu.wepa.hivemq.outbound.messages.count";
+public class TopicMetricsKafkaToMqttTransformerTest {
 }

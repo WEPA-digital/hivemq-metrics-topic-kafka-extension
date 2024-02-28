@@ -15,8 +15,10 @@
  */
 package eu.wepa.hivemqextensions.metricspertopickafka.transformers;
 
+import com.codahale.metrics.Counter;
 import com.codahale.metrics.MetricRegistry;
 import com.hivemq.extension.sdk.api.annotations.NotNull;
+import com.hivemq.extensions.kafka.api.model.KafkaRecord;
 import com.hivemq.extensions.kafka.api.transformers.kafkatomqtt.KafkaToMqttInitInput;
 import com.hivemq.extensions.kafka.api.transformers.kafkatomqtt.KafkaToMqttInput;
 import com.hivemq.extensions.kafka.api.transformers.kafkatomqtt.KafkaToMqttOutput;
@@ -24,19 +26,25 @@ import com.hivemq.extensions.kafka.api.transformers.kafkatomqtt.KafkaToMqttTrans
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+
 public class TopicMetricsKafkaToMqttTransformer implements KafkaToMqttTransformer {
 
-    private MetricRegistry metricRegistry;
+    public static final String METRIC_INBOUND_PREFIX = "eu.wepa.hivemq.inbound.messages.count";
+
+    private @NotNull HashMap<String, Counter> counters;
+
+    private @NotNull MetricRegistry metricRegistry;
 
     private static final @NotNull Logger LOG = LoggerFactory.getLogger(TopicMetricsKafkaToMqttTransformer.class);
-
     @Override
     public void init(@NotNull KafkaToMqttInitInput input) {
-        this.metricRegistry = input.getMetricRegistry();
+        metricRegistry = input.getMetricRegistry();
+        counters = new HashMap<>();
     }
 
     @Override
-    public void transformKafkaToMqtt(@NotNull KafkaToMqttInput input, @NotNull KafkaToMqttOutput output) {
-
+    public void transformKafkaToMqtt(@NotNull KafkaToMqttInput kafkaToMqttInput, @NotNull KafkaToMqttOutput kafkaToMqttOutput) {
+        // Inbound messages
     }
 }
