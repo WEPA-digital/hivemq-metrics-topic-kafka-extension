@@ -31,7 +31,7 @@ import java.util.HashMap;
 
 public class TopicMetricsMqttToKafkaTransformer implements MqttToKafkaTransformer {
 
-    public static final String METRIC_OUTBOUND_PREFIX = "eu.wepa.hivemq.outbound.messages.count";
+    public static final String METRIC_OUTBOUND_PREFIX = "eu.wepa.hivemq.messages.outbound.count";
 
     private @NotNull HashMap<String, Counter> counters;
 
@@ -48,7 +48,6 @@ public class TopicMetricsMqttToKafkaTransformer implements MqttToKafkaTransforme
     @Override
     public void transformMqttToKafka(@NotNull MqttToKafkaInput mqttToKafkaInput, @NotNull MqttToKafkaOutput mqttToKafkaOutput) {
 
-        // Outbound messages
         final PublishPacket publishPacket = mqttToKafkaInput.getPublishPacket();
         final String topic = publishPacket.getTopic();
 
