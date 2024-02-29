@@ -37,6 +37,7 @@ public class TopicMetricsKafkaToMqttTransformer implements KafkaToMqttTransforme
     private @NotNull MetricRegistry metricRegistry;
 
     private static final @NotNull Logger LOG = LoggerFactory.getLogger(TopicMetricsKafkaToMqttTransformer.class);
+    
     @Override
     public void init(@NotNull KafkaToMqttInitInput input) {
         metricRegistry = input.getMetricRegistry();
